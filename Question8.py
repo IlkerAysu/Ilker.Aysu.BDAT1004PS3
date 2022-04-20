@@ -11,9 +11,10 @@ import matplotlib.pyplot as plt
 ak = pd.read_csv(r'actor_kill_counts.csv') 
 ak.head()
 
+ak_sorted = ak.sort_values('Count')
 
 colours = ['#C4E57D','#2AC280','#FFAE39','#DC5B3B','#52E397','#C5CBA3','#9CD5F6','#6E50D9','#9A5E59','#9BC8F5']
-ak['Count'].value_counts().sort_index().plot.barh(color=colours)
+ak_sorted['Count'].value_counts().sort_index().plot.barh(color=colours)
 
 
 
@@ -23,5 +24,5 @@ ak['Count'].value_counts().sort_index().plot.barh(color=colours)
 # ak.plot.barh(x=ak['Count'], y=ak['Actor'], title='Deadliest Actor', color='blue')
 
 
-ax = ak.plot(x="Actor", y="Count", kind="barh")
+ax = ak_sorted.plot(x="Actor", y="Count", kind="barh")
 # plotting age on the same axis
